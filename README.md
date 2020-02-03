@@ -1,6 +1,6 @@
 # Projet de parallélisation de l'algorithme de la Descente du Gradient Stochastique
 
-Auteurs: Etienne Le Naouar, Ghassen Ben Hassine.
+Auteurs: Etienne Le Naour, Ghassen Ben Hassine.
 
 ### Objectif
 
