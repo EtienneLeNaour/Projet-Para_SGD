@@ -39,5 +39,3 @@ def sgd(x_init, n, n_epochs, size_batch, A, b, lbda, step=0.1):
             x_list.append(x.copy())
             
     return x, x_list
-
-

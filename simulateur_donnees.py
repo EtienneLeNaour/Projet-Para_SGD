@@ -12,26 +12,9 @@ from scipy.linalg.special_matrices import toeplitz
 
 
 def simu_linreg(x, n_samples, std=1., corr=0.5):
-    """Simulation for the least-squares problem.
 
-    Parameters
-    ----------
-    x : ndarray, shape (d,)
-        The coefficients of the model
-    n : int
-        Sample size
-    std : float, default=1.
-        Standard-deviation of the noise
-    corr : float, default=0.5
-        Correlation of the features matrix
+    """Simulation pour le probleme des moindres carrées"""
     
-    Returns
-    -------
-    A : ndarray, shape (n, d)
-        The design matrix.
-    b : ndarray, shape (n,)
-        The targets.
-    """
     d = x.shape[0]
     cov = toeplitz(corr ** np.arange(0, d))
     A = multivariate_normal(np.zeros(d), cov, size=n_samples)
@@ -43,14 +26,15 @@ def simu_linreg(x, n_samples, std=1., corr=0.5):
 def get_data(d, n_samples):
 
     """
-    use simu_linreg in order to simulate data
-    d = nb features
-    n_sample = nb samples
+    utilise simu_linreg pour simuler des données
+    d = nombre de variables
+    n_sample = taille de l'echantillon
     """
+    
     idx = np.arange(d)
 
     # Ground truth coefficients of the model
-    x_model_truth = (-1)**idx * np.exp(-idx / 10.) # Valeur des vrais paramètres 
-    A, b = simu_linreg(x_model_truth, n_samples)
+    true_coef = (-1)**idx * np.exp(-idx / 10.) # Valeur des vrais paramètres 
+    A, b = simu_linreg(true_coef, n_samples)
     
-    return A, b, x_model_truth
+    return A, b, true_coef
